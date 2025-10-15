@@ -73,6 +73,26 @@ class gaussian_editor:
             "initialized": False
         }
     
+    # # add initialize_mpm_engine for suitable HPC config
+    # @torch.no_grad()
+    # def initialize_mpm_engine(self, youngs_modulus_scale=1, poisson_ratio=0.2):
+    #     import taichi as ti
+    #     ti.init(arch=ti.cuda, device_memory_GB=4.0, 
+    #             debug=True,
+    #             default_fp=ti.f32, default_ip=ti.i32)
+
+    #     gui = ti.GUI("Taichi Elements", res=512, background_color=0x112F41, show_gui=False)
+
+    #     mpm = MPMSolver(res=(16, 16, 16), size=1, max_num_particles=2 ** 21,
+    #                     E_scale=youngs_modulus_scale, poisson_ratio=poisson_ratio)
+        
+    #     self.meta_editing_dict["physics_sim"] = {
+    #         "mpm": mpm,
+    #         "gui": gui,
+    #         "initialized": False
+    #     }
+    #     print("Done initialize_mpm_engine")
+    
     @torch.no_grad()
     def initialize_mpm_w_particles(self, init_particles_positions, infilling_downsample_ratio=0.2, ground_level=0.05, gravity=4):
         assert not self.meta_editing_dict["physics_sim"]["initialized"]

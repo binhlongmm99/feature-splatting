@@ -110,6 +110,8 @@ class FeatureSplattingModel(SplatfactoModel):
                 default_value="",
                 cb_hook=lambda elem: self.viewer_utils.update_text_embedding('positive', elem.value),
             )
+            # self.viewer_utils.update_text_embedding('positive', self.lang_1_pos_text.default_value)
+
             self.lang_2_neg_text = ViewerText(
                 name="Negative Text Queries",
                 default_value="object",
